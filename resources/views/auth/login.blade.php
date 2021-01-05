@@ -1,13 +1,34 @@
 @extends('layouts.app')
 
 @section('content')
+<style>
+
+    .content {
+        background:#5bc8af;
+    }
+
+    .title {
+        font-size: 24px;
+        color: #6c91bf;
+    }
+
+    .title1 {
+        font-size: 16px;
+        color: #636b6f;
+        font-family: 'Nunito', sans-serif;
+        font-weight: 200;
+    }
+
+    
+</style>
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+                <div class="card-header title content">{{ __('Welcome to the Login Page') }}</div>
 
-                <div class="card-body">
+                <div class="card-body title1">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
@@ -58,7 +79,7 @@
                                 </button>
 
                                 @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
+                                    <a class="btn btn-link " href="{{ route('password.request') }}">
                                         {{ __('Forgot Your Password?') }}
                                     </a>
                                 @endif
@@ -70,4 +91,5 @@
         </div>
     </div>
 </div>
+
 @endsection
