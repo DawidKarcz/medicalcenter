@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Auth;
 
 class HomeController extends Controller
@@ -15,6 +15,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
+        // Prevent unauthorised users from accessing these pages.
         $this->middleware('auth');
         $this->middleware('role:admin');
     }
@@ -22,14 +23,10 @@ class HomeController extends Controller
     /**
      * Show the application dashboard.
      *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @return \Illuminate\Http\Response
      */
     public function index()
     {
-       // $user = Auth::user();
-       // $user->authorizeRoles(['admin']);
-
-
         return view('admin.home');
     }
 }

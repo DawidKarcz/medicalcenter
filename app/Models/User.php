@@ -42,7 +42,9 @@ class User extends Authenticatable
     ];
 
 
-
+    /**
+     * The roles that belong to the user.
+     */
     public function roles()
     {
         return $this->belongsToMany('App\Models\Role', 'user_role');
@@ -60,7 +62,9 @@ class User extends Authenticatable
     }
 
 
-
+    /**
+     * Check that user has specific role
+     */
     public function hasAnyRole($roles)
     {
         return null !== $this->roles()->whereIn('name', $roles)->first();
@@ -72,7 +76,19 @@ class User extends Authenticatable
         return null !== $this->roles()->where('name', $role)->first();
     }
 
+    /**
+     * The patient that belong to the user.
+     */
+    public function patient() {
+        return $this->hasOne('App\Model\Patient');
+    }
+
+    /**
+     * The doctor that belongs to the user.
+     */
+    public function doctor() {
+        return $this->hasOne('App\Model\Doctor');
+    }
 
 
 }
- 
