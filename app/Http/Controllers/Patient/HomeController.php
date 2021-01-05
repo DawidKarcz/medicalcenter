@@ -22,14 +22,14 @@ class HomeController extends Controller
     /**
      * Show the application dashboard.
      *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @return \Illuminate\Http\Response
      */
     public function index()
     {
-       // $user = Auth::user();
-       // $user->authorizeRoles(['admin']);
+        $user = Auth::user();
 
-
-        return view('patient.home');
+        return view('patient.home')->with([
+            'user' => $user
+        ]);
     }
 }

@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Doctor;
+namespace App\Http\Controllers\Patient;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\User;
 use Auth;
-
-class HomeController extends Controller
+class DoctorController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -16,7 +16,7 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('role:doctor');
+        $this->middleware('role:patient');
     }
 
     /**
@@ -24,12 +24,12 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        $user = Auth::user();
+        $user = User::findOrFail($id);
 
-        return view('doctor.home')->with([
-            'user' => $user
+        return view('patient.doctor.view')->with([
+            'doctor' => $user->doctor
         ]);
     }
 }
