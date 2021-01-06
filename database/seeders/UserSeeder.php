@@ -79,8 +79,8 @@ class UserSeeder extends Seeder
       $patient->address = 'Dublin 123';
       $patient->phone = '0871234587';
       $patient->insurance = true;
-      $patient->insurance_company = 'VHI';
-      $patient->insurance_policy_no = 'VHI-1234567890';
+      $patient->insurance_company = 'HSF';
+      $patient->insurance_policy_no = 'HSF-1234567890';
       $patient->user_id = $user_patient->id;
       $patient->save();
 

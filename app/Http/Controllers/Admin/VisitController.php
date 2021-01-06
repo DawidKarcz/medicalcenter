@@ -149,7 +149,7 @@ class VisitController extends Controller
         $visit->save();
 
         // Send user back to main visit view with success message
-        $request->session()->flash('alert-success', 'Visit successfully updated');
+        $request->session()->flash('alert-info', 'Visit successfully updated.');
         return redirect()->route('admin.visits.index');
     }
 
@@ -165,7 +165,7 @@ class VisitController extends Controller
         $visit->delete();
 
         // Send user back to main visit view with success message
-        $request->session()->flash('alert-success', 'Visit successfully deleted');
+        $request->session()->flash('alert-danger', 'Visit successfully deleted!');
         return redirect()->route('admin.visits.index');
     }
 }

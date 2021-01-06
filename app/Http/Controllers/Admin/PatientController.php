@@ -66,10 +66,10 @@ class PatientController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|email|max:255|unique:users',
             'address' => 'required|string|max:255',
-            'phone' => 'required|integer|digits_between:1,11',
+            'phone' => 'required|alpha_num|size:9',
             'insurance' => 'required|boolean',
-            'insurance_company' => 'required_if:insurance, 1|max:255',
-            'insurance_policy_no' => 'required_if:insurance, 1|max:255'
+            'insurance_company' => 'required_if:insurance, 1|max:25',
+            'insurance_policy_no' => 'required_if:insurance, 1|max:10'
         ], $messages);
 
         // Error with form data. Redirect back to form page.
@@ -168,10 +168,10 @@ class PatientController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|email|max:255|unique:users,id,' . $patient->user->id,
             'address' => 'required|string|max:255',
-            'phone' => 'required|integer|digits_between:1,11',
+            'phone' => 'required|alpha_num|size:9',
             'insurance' => 'required|boolean',
-            'insurance_company' => 'required_if:insurance, 1|max:255',
-            'insurance_policy_no' => 'required_if:insurance, 1|max:255'
+            'insurance_company' => 'required_if:insurance, 1|max:25',
+            'insurance_policy_no' => 'required_if:insurance, 1|max:10'
         ]);
 
         // Update patient details
@@ -207,7 +207,7 @@ class PatientController extends Controller
         $patient->save();
 
         // Send user back to main patient view with success message
-        $request->session()->flash('alert-success', 'Patient successfully updated');
+        $request->session()->flash('alert-info', 'Patient successfully updated');
         return redirect()->route('admin.patients.index');
     }
 
@@ -225,7 +225,7 @@ class PatientController extends Controller
         // If patient still has visits prevent delete and show warning message. Otherwise delete and show success message.
         if($patient->visits()->count() == 0) {
             $patient_user->delete();
-            $request->session()->flash('alert-success', 'Patient successfully deleted');
+            $request->session()->flash('alert-danger', 'Patient successfully deleted');
             return redirect()->route('admin.patients.index');
         }
         else {

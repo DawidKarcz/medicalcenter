@@ -80,14 +80,14 @@ class User extends Authenticatable
      * The patient that belong to the user.
      */
     public function patient() {
-        return $this->hasOne('App\Model\Patient');
+        return $this->hasOne('App\Models\Patient');
     }
 
     /**
      * The doctor that belongs to the user.
      */
     public function doctor() {
-        return $this->hasOne('App\Model\Doctor');
+        return $this->hasOne('App\Models\Doctor');
     }
 
 

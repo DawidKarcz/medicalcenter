@@ -59,7 +59,7 @@ class DoctorController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|email|max:255|unique:users',
             'address' => 'required|string|max:255',
-            'phone' => 'required|integer|digits_between:1,11',
+            'phone' => 'required|alpha_num|size:9',
             'started_working' => 'required|date'
         ]);
 
@@ -147,7 +147,7 @@ class DoctorController extends Controller
         $doctor->save();
 
         // Send user back to main doctor view with success message
-        $request->session()->flash('alert-success', 'Doctor successfully updated');
+        $request->session()->flash('alert-info', 'Doctor successfully updated');
         return redirect()->route('admin.doctors.index');
     }
 
@@ -165,7 +165,7 @@ class DoctorController extends Controller
         // If doctor still has visits prevent delete and show warning message. Otherwise delete and show success message.
         if($doctor->visits()->count() == 0) {
             $doctor_user->delete();
-            $request->session()->flash('alert-success', 'Doctor successfully deleted');
+            $request->session()->flash('alert-danger', 'Doctor successfully deleted');
             return redirect()->route('admin.doctors.index');
         }
         else {

@@ -20,24 +20,25 @@ class HomeController extends Controller
     /**
      * Show the application dashboard.
      *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
         $user = Auth::user();
-        $home = 'home';
 
-        if($user->hasRole('admin')){
-              $home = 'admin.home';
-            }
-              else if ($user->hasRole('doctor')){
-                $home = 'doctor.home';
-              }
-
-              else if ($user->hasRole('patient')){
-                $home = 'patient.home';
-              }
-
-        return redirect()->route($home);
+        // Redirect user to corrct home page based on their role
+        if($user->hasRole('admin')) {
+            $route = 'admin.home';
+        }
+        else if($user->hasRole('doctor')) {
+            $route = 'doctor.home';
+        }
+        else if($user->hasRole('patient')) {
+            $route = 'patient.home';
+        }
+        else {
+            throw Exception('Undefined user role');
+        }
+        return redirect()->route($route);
     }
 }
