@@ -19,6 +19,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
 </head>
 <body>
     <div id="app">
@@ -93,7 +94,7 @@
 
             <div class="container">
                 <div class="row" style="position:relative;">
-                    <div class="flash-message" style="position: absolute;width: 100%;">
+                    <div class="flash-message " style="position: relative;width: 100%;">
                         @foreach (['danger', 'warning', 'success', 'info'] as $msg)
                             @if(Session::has('alert-' . $msg))
                             <p class="flash alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }} <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>

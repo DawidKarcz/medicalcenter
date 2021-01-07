@@ -47,17 +47,12 @@
                                 <tr>
                                     <td>Insurance</td>
                                     <td>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="insurance"  value="1" @if(old('insurance') == true) checked @endif>
-                                            <label class="form-check-label" for="insurance">
-                                            Yes
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="insurance"  value="0" @if(old('insurance') == false) checked @endif>
-                                            <label class="form-check-label" for="insurance">
-                                            No
-                                            </label>
+                                      <br>
+                                        <div class="form-group">
+                                          <select name="insurance">
+                                             <option value="1" @if(old('insurance') == true) checked @endif>   <label for="insurance">Yes</label></option>
+                                             <option value="0" @if(old('insurance') == false) checked @endif>   <label for="insurance">No</label></option>
+                                          </select>
                                         </div>
                                     </td>
                                     <td>{{ $errors->first('insurance') }}</td>

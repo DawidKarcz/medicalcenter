@@ -6,7 +6,10 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">Hello You Are Logged in Doctors Dashboard.</div>
-
+                <br>
+                <div class="col-12">
+                    <a href="{{ route('doctor.visits.create') }}" class="btn btn-primary float-right btn-lg">Add Visit</a>
+                </div>
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
@@ -34,6 +37,15 @@
                                 <td>{{ $visit->duration }}</td>
                                 <td>{{ $visit->cost }}</td>
                                 <td><a href="{{ route('doctor.patient.view', $visit->patient->user) }}">{{ $visit->patient->user->name }}</a></td>
+                                <td>
+                                  <a href="{{ route('doctor.visits.edit', $visit) }}" class="btn btn-warning">Edit</a>
+                                </td>
+                                <td><form action="{{ route('doctor.visit.destroy', $visit)}}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="btn btn-danger delete_item">Cancel Visit</button>
+                                </form>
+                              </td>
                             </tr>
                             @endforeach
                         </tbody>

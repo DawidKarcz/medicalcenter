@@ -48,6 +48,9 @@
         </div>
     </div>
 
+    @if (count($doctor->visits) === 0)
+<p>There are no visits!</p>
+@else
     <table class="table table-hover table-striped table-bordered">
         <thead class="thead-dark">
             <tr>
@@ -82,5 +85,6 @@
             @endforeach
         </tbody>
     </table>
+    @endif
 </div>
 @endsection

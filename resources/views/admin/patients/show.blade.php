@@ -68,6 +68,9 @@
             <a href="{{ route('admin.visits.create') }}" class="btn btn-primary btn-md float-right">Add Visit</a>
         </div>
     </div>
+    @if (count($patient->visits) === 0)
+<p>There are no visits!</p>
+@else
     <table class="table table-hover table-striped table-bordered">
         <thead class="thead-dark">
             <tr>
@@ -102,7 +105,7 @@
             @endforeach
         </tbody>
     </table>
-
+@endif
 </div>
 
 

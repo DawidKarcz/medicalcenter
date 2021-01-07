@@ -34,6 +34,12 @@
                                 <td>{{ $visit->duration }}</td>
                                 <td>{{ $visit->cost }}</td>
                                 <td><a href="{{ route('patient.doctor.view', $visit->doctor->user) }}">{{ $visit->doctor->user->name }}</a></td>
+                                <td><form action="{{ route('patient.visit.destroy', $visit)}}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="btn btn-danger delete_item">Cancel Visit</button>
+                                </form>
+                              </td>
                             </tr>
                             @endforeach
                         </tbody>
