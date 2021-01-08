@@ -19,9 +19,10 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-
+//This redirects the admins to their routes
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/admin/home', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('admin.home');
+//This redirects the doctors to their routes
 Route::get('/doctor/home', 'App\Http\Controllers\Doctor\HomeController@index')->name('doctor.home');
 Route::get('/doctor/visits', 'App\Http\Controllers\Doctor\VisitController@index')->name('doctor.visits.index');
 Route::get('/doctor/visits/create', 'App\Http\Controllers\Doctor\VisitController@create')->name('doctor.visits.create');
@@ -29,6 +30,7 @@ Route::post('/doctor/visits/store', 'App\Http\Controllers\Doctor\VisitController
 Route::get('/doctor/patient/{id}', 'App\Http\Controllers\Doctor\PatientController@index')->name('doctor.patient.view');
 Route::get('/doctor/visits/{id}/edit','App\Http\Controllers\Doctor\VisitController@edit')->name('doctor.visits.edit');
 Route::put('/doctor/visits/{id}', 'App\Http\Controllers\Doctor\VisitController@update')->name('doctor.visits.update');
+//This redirects the patients to their routes
 Route::get('/patient/home', 'App\Http\Controllers\Patient\HomeController@index')->name('patient.home');
 Route::get('/patient/doctor/{id}', 'App\Http\Controllers\Patient\DoctorController@index')->name('patient.doctor.view');
 Route::delete('/patient/visit/{id}', 'App\Http\Controllers\Patient\VisitController@destroy')->name('patient.visit.destroy');
