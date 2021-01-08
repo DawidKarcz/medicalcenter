@@ -13,10 +13,10 @@
 3) Paste the link into Clone from and select a directory consisting the WAF folder copy the path and clone the project into there.
 4) Open the Homestead folder in Atom, and go into the homestead.yaml to configure the settings.
 5) Put that code under sites: 
-   - map: medical.center
+   -  - map: medical.center
       to: /home/vagrant/WAF/MyLaravelProjects/MedicalCenter/public
    Put this under database: 
-   - medical_center
+   -  - medical_center
    Save this homestead.yaml file.
 6) Then open up Notepad as Administrator, Pick File -> Open -> hosts -> add this line of code 127.0.0.1	medical.center under # localhost name resolution is handled within DNS itself. Save and exit.
 7) Then open up GitBash, type -> cd WAF/Homestead -> vagrant up
