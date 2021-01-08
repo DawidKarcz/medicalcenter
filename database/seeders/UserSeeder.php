@@ -80,7 +80,7 @@ class UserSeeder extends Seeder
       $patient->phone = '0871234587';
       $patient->insurance = true;
       $patient->insurance_company = 'HSF';
-      $patient->insurance_policy_no = 'HSF-1234567890';
+      $patient->insurance_policy_no = '1234567890';
       $patient->user_id = $user_patient->id;
       $patient->save();
 
@@ -95,7 +95,7 @@ class UserSeeder extends Seeder
       $patient->phone = '0874334587';
       $patient->insurance = true;
       $patient->insurance_company = 'IHV';
-      $patient->insurance_policy_no = 'IHV-1234567890';
+      $patient->insurance_policy_no = '1234567890';
       $patient->user_id = $user_patient->id;
       $patient->save();
 
