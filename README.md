@@ -8,7 +8,7 @@
 </p>
 
 ## How to install the project MedicalCenter on your device.
-1) Please copy the projects repository link from github.
+1) Please copy the projects repository link from github. https://github.com/DawidKarcz/medicalcenter.git
 ## About Laravel
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
